@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Intersolus</title>
+    <link rel="stylesheet" href="static/main.css" />
+    <link rel="icon" type="image/x-icon" href="static/icon.png">
+</head>
+<body>
+    <div class="header-content">
+    <img src="static/logo.png" alt="Logo" class="logo">
+    </div>
+
+    <div class="view-options">
+        <button onclick="setView('grid')"><img src="static/gridview.png" width="24" height="24"></button>
+        <button onclick="setView('list')"><img src="static/listview.png" width="24" height="24"></button>
+    </div>
+
+    <div id="album-container" class="view-grid">
+
+    
+
+    </div> 
+
+    <div class="footer">
+        <p>Don't see your favorite album? <a href="https://github.com/Intersal/Intersolus/issues/new?title=Album%20Request&body=Please%20add%20this%20album..." target="_blank">Request it here</a></p>
+    </div>
+
+    <script>
+        function toggleAlbum(element) {
+            element.classList.toggle("open");
+        }
+
+        function setView(viewType) {
+            const container = document.getElementById('album-container');
+            if (!container) {
+                console.error("Album container not found!");
+                return;
+            }
+            if (viewType === 'grid') {
+                container.classList.remove('view-list');
+                container.classList.add('view-grid');
+            } else if (viewType === 'list') {
+                container.classList.remove('view-grid');
+                container.classList.add('view-list');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+/* Dark Mode Music Library Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.header-content {
+    /* Use Flexbox to manage the logo and h1 */
+    display: flex;
+    /* Stack them vertically (logo above title) */
+    flex-direction: column;
+    /* Center items horizontally within the screen */
+    align-items: center;
+    /* Set bottom margin to separate the header from the view buttons */
+    margin-bottom: 40px; 
+}
+
+.logo {
+    display: block;
+    /* Key for responsiveness: size based on 15% of viewport width (vw) */
+    max-width: 15vw; 
+    width: auto; /* Ensures image maintains aspect ratio */
+    height: auto;
+    /* Ensure image is not hidden by old rules, removing 'margin: auto;' which is replaced by flexbox */
+    
+    /* Small margin between logo and title */
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.view-options {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.view-options button {
+    background: none;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-options button:hover {
+    background-color: #ffffff;
+    color: #121212;
+}
+
+.album {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    
+    cursor: pointer;
+}
+
+.track-list {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+}
+
+.album.open .track-list {
+    display: block !important; /* Visible when open */
+    animation: fadeIn 0.3s;
+}
+
+.arrow {
+    display: block; /* Visible by default */
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.album.open .arrow {
+    transform: rotate(180deg);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.album:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.album h2 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.Albumcover {
+    display: block;
+    margin: 0 auto 15px;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #2a2a2a;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li:hover {
+    background-color: #333333;
+}
+
+.track-title {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+audio {
+    margin-right: 10px;
+    max-width: 200px;
+}
+
+a img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+a img:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .album {
+        padding: 15px;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    audio {
+        margin-top: 10px;
+        margin-right: 0;
+        max-width: 100%;
+    }
+}
+
+
+
+/* --- Base Styles for Collapsing (Keep these simple) --- */
+/* (We are placing the arrow and track-list base styles inside the list view) */
+
+/* ... (Existing base styles before .album:hover, etc.) ... */
+
+/* --- VIEW OPTIONS STYLES --- */
+
+/* ... (Keep existing view-options styles) ... */
+
+/* --- GRID VIEW STYLES (Default) --- */
+
+#album-container.view-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; 
+    padding: 20px;
+}
+
+#album-container.view-grid .album {
+    width: 280px; 
+    padding: 15px;
+    transition: none; 
+}
+
+#album-container.view-grid .album:hover {
+    transform: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+#album-container.view-grid .Albumcover {
+    max-width: 100%; 
+    max-height: 200px; 
+    margin: 0 auto 10px;
+}
+
+/* FIX: Ensure tracks and arrow are hidden in Grid View */
+#album-container.view-grid .track-list {
+    display: none; 
+}
+#album-container.view-grid .arrow {
+    display: block; /* Show arrow in grid */
+}
+
+
+/* --- LIST VIEW STYLES (Enables collapsing) --- */
+
+#album-container.view-list {
+    display: block; 
+    padding: 0 10%; 
+}
+
+#album-container.view-list .album {
+    width: 100%;
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}
+
+#album-container.view-list .Albumcover {
+    float: left;
+    max-width: 100px; 
+    margin-right: 15px;
+}
+
+#album-container.view-list .album:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* LIST VIEW COLLAPSING RULES (The fix for the arrows/tracks) */
+
+/* Arrow is VISIBLE by default in List View */
+#album-container.view-list .arrow {
+    display: block; /* Make sure it's visible */
+    text-align: center;
+    color: #ffffff; /* Brighter color for visibility */
+    font-size: 1.2rem;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate Arrow when open */
+#album-container.view-list .album.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* Tracks are hidden by default in List View */
+#album-container.view-list .track-list {
+    display: none; 
+    margin-top: 15px;
+}
+
+/* Tracks are shown when the album is open in List View */
+#album-container.view-list .album.open .track-list {
+    display: block;
+    animation: fadeIn 0.3s;
+}
