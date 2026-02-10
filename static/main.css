@@ -1,4 +1,3 @@
-/* Dark Mode Music Library Styles */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,25 +9,18 @@ body {
 }
 
 .header-content {
-    /* Use Flexbox to manage the logo and h1 */
     display: flex;
-    /* Stack them vertically (logo above title) */
     flex-direction: column;
-    /* Center items horizontally within the screen */
     align-items: center;
-    /* Set bottom margin to separate the header from the view buttons */
     margin-bottom: 40px; 
 }
 
 .logo {
     display: block;
-    /* Key for responsiveness: size based on 15% of viewport width (vw) */
     max-width: 15vw; 
-    width: auto; /* Ensures image maintains aspect ratio */
+    width: auto;
     height: auto;
-    /* Ensure image is not hidden by old rules, removing 'margin: auto;' which is replaced by flexbox */
     
-    /* Small margin between logo and title */
     margin-bottom: 10px;
 }
 
@@ -57,7 +49,7 @@ h1 {
 }
 
 .view-options button:hover {
-    background-color: #ffffff;
+    background-color: #898989;
     color: #121212;
 }
 
@@ -73,17 +65,17 @@ h1 {
 }
 
 .track-list {
-    display: none; /* Hidden by default */
+    display: none;
     margin-top: 15px;
 }
 
 .album.open .track-list {
-    display: block !important; /* Visible when open */
+    display: block !important;
     animation: fadeIn 0.3s;
 }
 
 .arrow {
-    display: block; /* Visible by default */
+    display: block;
     text-align: center;
     color: #ffffff;
     font-size: 1.2rem;
@@ -102,7 +94,6 @@ h1 {
 
 .album:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .album h2 {
@@ -190,16 +181,6 @@ a img:hover {
 
 
 
-/* --- Base Styles for Collapsing (Keep these simple) --- */
-/* (We are placing the arrow and track-list base styles inside the list view) */
-
-/* ... (Existing base styles before .album:hover, etc.) ... */
-
-/* --- VIEW OPTIONS STYLES --- */
-
-/* ... (Keep existing view-options styles) ... */
-
-/* --- GRID VIEW STYLES (Default) --- */
 
 #album-container.view-grid {
     display: flex;
@@ -217,7 +198,7 @@ a img:hover {
 
 #album-container.view-grid .album:hover {
     transform: none;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    background-color: #1b1b1b ;
 }
 
 #album-container.view-grid .Albumcover {
@@ -226,16 +207,14 @@ a img:hover {
     margin: 0 auto 10px;
 }
 
-/* FIX: Ensure tracks and arrow are hidden in Grid View */
+
 #album-container.view-grid .track-list {
     display: none; 
 }
 #album-container.view-grid .arrow {
-    display: block; /* Show arrow in grid */
+    display: block;
 }
 
-
-/* --- LIST VIEW STYLES (Enables collapsing) --- */
 
 #album-container.view-list {
     display: block; 
@@ -262,30 +241,26 @@ a img:hover {
     clear: both;
 }
 
-/* LIST VIEW COLLAPSING RULES (The fix for the arrows/tracks) */
 
-/* Arrow is VISIBLE by default in List View */
 #album-container.view-list .arrow {
-    display: block; /* Make sure it's visible */
+    display: block;
     text-align: center;
-    color: #ffffff; /* Brighter color for visibility */
+    color: #ffffff;
     font-size: 1.2rem;
     margin-top: 10px;
     transition: transform 0.3s ease;
 }
 
-/* Rotate Arrow when open */
+
 #album-container.view-list .album.open .arrow {
     transform: rotate(180deg);
 }
 
-/* Tracks are hidden by default in List View */
 #album-container.view-list .track-list {
     display: none; 
     margin-top: 15px;
 }
 
-/* Tracks are shown when the album is open in List View */
 #album-container.view-list .album.open .track-list {
     display: block;
     animation: fadeIn 0.3s;
